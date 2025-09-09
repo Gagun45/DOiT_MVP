@@ -2,13 +2,15 @@
 
 import { Box, Grid } from "@mui/material";
 import PostCard from "../PostCard/PostCard";
-import { useGetAllPostsQuery } from "@/redux/api";
+import { useGetAllPostsQuery } from "@/redux/apis/postsApi";
 
 const AllPosts = () => {
   const { data: posts, error, isLoading } = useGetAllPostsQuery();
 
-  if (isLoading) return <Box>Loading...</Box>;
-  if (error || !posts) return <Box>Error</Box>;
+  if (isLoading && !posts) return <Box>Loading...</Box>;
+  if (error || !posts) {
+    return <Box>Error</Box>;
+  }
 
   return (
     <Grid container spacing={2}>

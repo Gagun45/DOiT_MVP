@@ -36,7 +36,7 @@ const PostCard = ({ post }: Props) => {
         <Typography>{post.body.slice(0, 100)}</Typography>
       </CardContent>
       <CardActions>
-        <Button LinkComponent={Link} href={`/post/${post.id}`}>
+        <Button LinkComponent={Link} href={`/posts/${post.id}`}>
           <ArrowForward
             sx={{ color: "grey", ":hover": { color: "var(--color-primary)" } }}
           />
