@@ -4,7 +4,16 @@ import { Box } from "@mui/material";
 
 const AllPostsPage = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: 1440,
+        marginX: "auto ",
+        paddingTop: '36px',
+        paddingX: '24px',
+      }}
+    >
       <SearchBar />
       <AllPosts />
     </Box>

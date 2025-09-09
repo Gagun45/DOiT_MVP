@@ -23,8 +23,7 @@ const PostCard = ({ post }: Props) => {
       variant="outlined"
       sx={{
         width: "100%",
-        maxWidth: "350px",
-        minHeight: "200px",
+        height: "100%",
       }}
     >
       <CardHeader
