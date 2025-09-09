@@ -6,12 +6,12 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Link,
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { ArrowForward } from "@mui/icons-material";
 import DeletePostBtn from "./DeletePostButton/DeletePostBtn";
+import Link from "next/link";
 
 interface Props {
   post: PostInterface;
@@ -33,7 +33,17 @@ const PostCard = ({ post }: Props) => {
         action={<DeletePostBtn />}
       />
       <CardContent>
-        <Typography>{post.body.slice(0, 100)}</Typography>
+        <Typography
+          sx={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {post.body}
+        </Typography>
       </CardContent>
       <CardActions>
         <Button LinkComponent={Link} href={`/posts/${post.id}`}>

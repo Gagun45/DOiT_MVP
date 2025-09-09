@@ -1,3 +1,11 @@
 :root{
     --color-primary: #2196f3
 }
+
+main {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 36px;
+}
