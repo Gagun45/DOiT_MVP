@@ -2,7 +2,7 @@
 
 import SinglePost from "@/components/SinglePost/SinglePost";
 import { useGetSinglePostByIdQuery } from "@/redux/apis/postsApi";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 interface Props {
   params: { id: string };
@@ -17,7 +17,12 @@ const SinglePostPage = ({ params }: Props) => {
   } = useGetSinglePostByIdQuery(id, {
     refetchOnMountOrArgChange: false,
   });
-  if (isLoading) return <Box>Loading...</Box>;
+  if (isLoading)
+    return (
+      <Box component={"main"}>
+        <CircularProgress size={96} />
+      </Box>
+    );
   if (error || !post) return <Box>Error</Box>;
 
   return (

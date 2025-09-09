@@ -4,12 +4,12 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 
 import ThemeToggleBtn from "./ThemeToggle/ThemeToggleBtn";
 import { IconButton } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import AppDrawer from "./AppDrawer/AppDrawer";
+import AppBarTitle from "./AppBarTitle/AppBarTitle";
 
 export default function Header() {
   const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
@@ -27,9 +27,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            DOiT MVP
-          </Typography>
+          <AppBarTitle />
           <ThemeToggleBtn />
         </Toolbar>
       </AppBar>
