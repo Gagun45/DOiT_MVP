@@ -1,4 +1,4 @@
-import HeroSection from "@/components/Header/HeroSection/HeroSection";
+import HeroSection from "@/components/HeroSection/HeroSection";
 import { Box } from "@mui/material";
 
 export default function Home() {
