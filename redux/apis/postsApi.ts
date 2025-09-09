@@ -1,5 +1,5 @@
 import { BASE_API_URL } from "@/utils/constants";
-import type { PostInterface } from "@/utils/types";
+import type { CommentInterface, PostInterface } from "@/utils/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const postsApi = createApi({
@@ -12,7 +12,14 @@ export const postsApi = createApi({
     getSinglePostById: build.query<PostInterface, string>({
       query: (id) => `/posts/${id}`,
     }),
+    getCommentsByPostId: build.query<CommentInterface[], string>({
+      query: (id) => `/comments?postId=${id}`,
+    }),
   }),
 });
 
-export const { useGetAllPostsQuery, useGetSinglePostByIdQuery } = postsApi;
+export const {
+  useGetAllPostsQuery,
+  useGetSinglePostByIdQuery,
+  useGetCommentsByPostIdQuery,
+} = postsApi;

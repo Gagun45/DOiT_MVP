@@ -10,6 +10,7 @@ import { IconButton } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import AppDrawer from "./AppDrawer/AppDrawer";
 import AppBarTitle from "./AppBarTitle/AppBarTitle";
+import CommentDialog from "./CommentDialog/CommentDialog";
 
 export default function Header() {
   const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
@@ -29,6 +30,7 @@ export default function Header() {
           </IconButton>
           <AppBarTitle />
           <ThemeToggleBtn />
+          <CommentDialog />
         </Toolbar>
       </AppBar>
       <AppDrawer

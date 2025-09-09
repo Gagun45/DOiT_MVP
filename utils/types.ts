@@ -12,3 +12,11 @@ export interface PostInterface {
   title: string;
   body: string;
 }
+
+export interface CommentInterface {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
