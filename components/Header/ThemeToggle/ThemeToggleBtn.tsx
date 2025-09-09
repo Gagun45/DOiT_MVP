@@ -1,4 +1,4 @@
-import { useThemeToggle } from "@/utils/providers/ThemeToggleContext";
+import { useThemeToggle } from "@/providers/ThemeProvider/ThemeToggleContext";
 import { Button } from "@mui/material";
 import { WbSunny, DarkMode } from "@mui/icons-material";
 

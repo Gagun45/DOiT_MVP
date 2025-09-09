@@ -1,32 +1,15 @@
 "use client";
 
-import type { PostInterface } from "@/utils/types";
 import { Box, Grid } from "@mui/material";
-import { useEffect, useState } from "react";
 import PostCard from "../PostCard/PostCard";
-
-const ALL_POSTS_URL = "https://jsonplaceholder.typicode.com/posts?limit=10";
+import { useGetAllPostsQuery } from "@/redux/api";
 
 const AllPosts = () => {
-  const [posts, setPosts] = useState<PostInterface[]>([]);
-  const [loading, setLoading] = useState(true);
-  const fetchPosts = async () => {
-    try {
-      const res = await fetch(ALL_POSTS_URL);
-      if (!res.ok) return;
-      const allPosts = await res.json();
-      setPosts(allPosts);
-    } catch {
-      return;
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    setLoading(true);
-    fetchPosts();
-  }, []);
-  if (loading) return <Box>Loading</Box>;
+  const { data: posts, error, isLoading } = useGetAllPostsQuery();
+
+  if (isLoading) return <Box>Loading...</Box>;
+  if (error || !posts) return <Box>Error</Box>;
+
   return (
     <Grid container spacing={2}>
       {posts.map((post) => (

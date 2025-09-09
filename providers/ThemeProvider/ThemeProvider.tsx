@@ -8,8 +8,8 @@ import {
   Box,
   type PaletteOptions,
 } from "@mui/material";
-import { ThemeToggleContext } from "./ThemeToggleContext";
 import { blue, purple, red } from "@mui/material/colors";
+import { ThemeToggleContext } from "./ThemeToggleContext";
 
 declare module "@mui/material/styles" {
   interface Palette {
