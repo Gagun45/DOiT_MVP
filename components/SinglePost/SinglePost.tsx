@@ -27,7 +27,7 @@ const SinglePost = ({ post }: Props) => {
         <Typography>{post.body}</Typography>
       </CardContent>
       <CardActions>
-        <SinglePostDeleteBtn />
+        <SinglePostDeleteBtn postId={post.id.toString()} />
         <BackToAllPostsBtn />
       </CardActions>
     </Card>

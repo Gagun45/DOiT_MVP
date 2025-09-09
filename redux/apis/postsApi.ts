@@ -10,10 +10,19 @@ export const postsApi = createApi({
       query: () => "/posts",
     }),
     getSinglePostById: build.query<PostInterface, string>({
-      query: (id) => `/posts/${id}`,
+      query: (postId) => `/posts/${postId}`,
     }),
     getCommentsByPostId: build.query<CommentInterface[], string>({
-      query: (id) => `/comments?postId=${id}`,
+      query: (postId) => `/comments?postId=${postId}`,
+    }),
+    deletePostById: build.mutation<{ success: boolean }, string>({
+      query: (postId) => ({ url: `/posts/${postId}`, method: "DELETE" }),
+      transformResponse: () => {
+        return { success: true };
+      },
+      transformErrorResponse: () => {
+        return { success: false };
+      },
     }),
   }),
 });
@@ -22,4 +31,5 @@ export const {
   useGetAllPostsQuery,
   useGetSinglePostByIdQuery,
   useGetCommentsByPostIdQuery,
+  useDeletePostByIdMutation,
 } = postsApi;

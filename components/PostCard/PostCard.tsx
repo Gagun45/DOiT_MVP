@@ -30,7 +30,7 @@ const PostCard = ({ post }: Props) => {
         avatar={<Avatar sx={{ bgcolor: grey[500] }}>H</Avatar>}
         title={post.title}
         subheader={`User ${post.userId}`}
-        action={<DeletePostBtn />}
+        action={<DeletePostBtn postId={post.id.toString()} />}
       />
       <CardContent>
         <Typography

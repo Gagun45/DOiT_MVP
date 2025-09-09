@@ -1,9 +1,16 @@
 import { Button } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import { useDeletePost } from "@/hooks/useDeletePost";
 
-const SinglePostDeleteBtn = () => {
+interface Props {
+  postId: string;
+}
+
+const SinglePostDeleteBtn = ({ postId }: Props) => {
+  const handleDelete = useDeletePost();
   return (
     <Button
+      onClick={() => handleDelete(postId)}
       className="outlined"
       sx={{
         bgcolor: "red",
