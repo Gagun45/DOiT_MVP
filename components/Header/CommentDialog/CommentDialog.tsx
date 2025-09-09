@@ -1,4 +1,4 @@
-import type { RootState } from "@/redux/store";
+import { selectComments } from "@/redux/slices/commentsSlice";
 import { Comment } from "@mui/icons-material";
 import {
   Badge,
@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 const CommentDialog = () => {
   const [open, setOpen] = useState(false);
-  const { comments } = useSelector((state: RootState) => state.comments);
+  const comments = useSelector(selectComments);
 
   if (comments.length === 0) return null;
   return (
@@ -26,7 +26,7 @@ const CommentDialog = () => {
       </Button>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Коментарі</DialogTitle>
-        <List sx={{padding: 2}}>
+        <List sx={{ padding: 2 }}>
           {comments.map((comm) => (
             <ListItem
               key={comm.id}

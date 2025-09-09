@@ -9,11 +9,12 @@ import Link from "next/link";
 
 interface Props {
   link: DrawerLinkInterface;
+  closeDrawer: () => void;
 }
 
-const LinkItem = ({ link }: Props) => {
+const LinkItem = ({ link, closeDrawer }: Props) => {
   return (
-    <ListItem key={link.label} sx={{ paddingLeft: "0" }}>
+    <ListItem key={link.label} sx={{ paddingLeft: "0" }} onClick={closeDrawer}>
       <ListItemButton
         LinkComponent={Link}
         href={link.href}

@@ -14,6 +14,7 @@ const AllPostsPage = () => {
         marginX: "auto",
         paddingTop: "36px",
         paddingX: "24px",
+        gap: '12px'
       }}
     >
       <SearchBar />

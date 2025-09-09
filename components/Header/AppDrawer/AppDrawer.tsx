@@ -15,6 +15,9 @@ const LINKS: DrawerLinkInterface[] = [
 ];
 
 const AppDrawer = ({ drawerIsOpen, setDrawerIsOpen }: Props) => {
+  const closeDrawer = () => {
+    setDrawerIsOpen(false);
+  };
   return (
     <Drawer
       sx={{ display: "flex", flexDirection: "column" }}
@@ -23,7 +26,7 @@ const AppDrawer = ({ drawerIsOpen, setDrawerIsOpen }: Props) => {
     >
       <List>
         {LINKS.map((link) => (
-          <LinkItem link={link} key={link.label} />
+          <LinkItem link={link} key={link.label} closeDrawer={closeDrawer} />
         ))}
       </List>
     </Drawer>

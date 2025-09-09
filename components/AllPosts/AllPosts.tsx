@@ -3,11 +3,21 @@
 import { Box, Grid, Skeleton } from "@mui/material";
 import PostCard from "../PostCard/PostCard";
 import { useGetAllPostsQuery } from "@/redux/apis/postsApi";
+import { useSelector } from "react-redux";
+import { selectSearchTerm } from "@/redux/slices/searchSlice";
 
 const skeletons = Array.from({ length: 6 }, (_, i) => i);
 
 const AllPosts = () => {
   const { data: posts, error, isLoading } = useGetAllPostsQuery();
+
+  const searchTermLowerCase = useSelector(selectSearchTerm).toLowerCase();
+
+  const filteredPosts = searchTermLowerCase
+    ? posts?.filter((post) =>
+        post.title.toLowerCase().includes(searchTermLowerCase)
+      )
+    : posts;
 
   if (isLoading)
     return (
@@ -24,13 +34,13 @@ const AllPosts = () => {
         ))}
       </Grid>
     );
-  if (error || !posts) {
+  if (error || !filteredPosts) {
     return <Box>Error</Box>;
   }
 
   return (
     <Grid container spacing={2}>
-      {posts.map((post) => (
+      {filteredPosts.map((post) => (
         <Grid item xs={6} md={4} key={post.id}>
           <PostCard post={post} />
         </Grid>
