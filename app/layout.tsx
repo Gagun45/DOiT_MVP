@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import ThemeAppProvider from "@/providers/ThemeProvider/ThemeProvider";
 import ReduxProvider from "@/providers/ReduxProvider/ReduxProvider";
+import GlobalSnackbar from "@/components/GlobalSnackbar/GlobalSnackbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <ThemeAppProvider>
             <Header />
             {children}
+            <GlobalSnackbar />
           </ThemeAppProvider>
         </ReduxProvider>
       </body>

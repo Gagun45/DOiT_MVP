@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { useDeletePost } from "@/hooks/useDeletePost";
 
@@ -7,19 +7,28 @@ interface Props {
 }
 
 const SinglePostDeleteBtn = ({ postId }: Props) => {
-  const handleDelete = useDeletePost();
+  const { handleDeletePost, isLoading } = useDeletePost();
+
   return (
     <Button
-      onClick={() => handleDelete(postId)}
+      disabled={isLoading}
+      onClick={() => handleDeletePost(postId)}
       className="outlined"
       sx={{
         bgcolor: "red",
         color: "white",
         ":hover": { bgcolor: "red" },
+        ":disabled": { color: "white", opacity: "50%" },
       }}
-      startIcon={<Delete />}
+      startIcon={
+        isLoading ? (
+          <CircularProgress size={18} sx={{ color: "white" }} />
+        ) : (
+          <Delete />
+        )
+      }
     >
-      ВИДАЛИТИ
+      {isLoading ? "Видалення..." : "Видалити"}
     </Button>
   );
 };

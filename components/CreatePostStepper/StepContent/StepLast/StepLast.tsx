@@ -1,6 +1,6 @@
-import { useCreatePost } from "@/hooks/useCreatePost";
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -13,25 +13,18 @@ interface Props {
   onCancel: () => void;
   title: string;
   body: string;
-  resetStepper: () => void;
+  onConfirm: () => void;
+  isLoading: boolean;
 }
 
-const StepLast = ({ body, open, onCancel, title, resetStepper }: Props) => {
-  const handleConfirm = useCreatePost();
-
-  const onConfirm = async () => {
-    try {
-      const res = await handleConfirm({ body, title });
-      if (res.success) {
-        resetStepper();
-      }
-    } catch {
-      console.log("smth went wrong");
-    } finally {
-      onCancel();
-    }
-  };
-
+const StepLast = ({
+  body,
+  open,
+  onCancel,
+  title,
+  onConfirm,
+  isLoading,
+}: Props) => {
   return (
     <Dialog
       open={open}
@@ -47,6 +40,12 @@ const StepLast = ({ body, open, onCancel, title, resetStepper }: Props) => {
         <Button onClick={onCancel}>Редагувати</Button>
         <Button
           onClick={onConfirm}
+          disabled={isLoading}
+          startIcon={
+            isLoading ? (
+              <CircularProgress size={12} sx={{ color: "white" }} />
+            ) : undefined
+          }
           sx={{
             color: "white",
             bgcolor: "var(--color-primary)",

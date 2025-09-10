@@ -9,6 +9,10 @@ import StepOne from "./StepContent/StepOne/StepOne";
 import StepTwo from "./StepContent/StepTwo/StepTwo";
 import { Save } from "@mui/icons-material";
 import StepLast from "./StepContent/StepLast/StepLast";
+import { useCreatePost } from "@/hooks/useCreatePost";
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "@/redux/store";
+import { showSnackbar } from "@/redux/slices/snackbarSlice";
 
 const STEPS = ["Заголовок", "тіло", "Попередній перегляд"];
 
@@ -16,6 +20,7 @@ const CreatePostStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
 
   const resetStepper = () => {
     setActiveStep(0);
@@ -29,6 +34,29 @@ const CreatePostStepper = () => {
   const handleNext = () => {
     if (activeStep < STEPS.length - 1) {
       setActiveStep((prev) => prev + 1);
+    }
+  };
+
+  const { handleCreatePost, isLoading } = useCreatePost();
+
+  const onConfirm = async () => {
+    try {
+      const res = await handleCreatePost({ body, title });
+      if (res.success) {
+        dispatch(
+          showSnackbar({ message: "Пост створено", severity: "success" })
+        );
+      } else {
+        dispatch(
+          showSnackbar({ message: "Щось пішло не так", severity: "error" })
+        );
+      }
+    } catch {
+      dispatch(
+        showSnackbar({ message: "Щось пішло не так", severity: "error" })
+      );
+    } finally {
+      resetStepper();
     }
   };
   const handleBack = () => setActiveStep((prev) => prev - 1);
@@ -53,7 +81,8 @@ const CreatePostStepper = () => {
           open={true}
           title={title}
           onCancel={() => setActiveStep(0)}
-          resetStepper={resetStepper}
+          onConfirm={onConfirm}
+          isLoading={isLoading}
         />
       )}
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 4 }}>
