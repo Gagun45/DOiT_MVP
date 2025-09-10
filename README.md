@@ -48,7 +48,7 @@
         git clone https://github.com/Gagun45/DOiT_MVP.git
 
         # Navigate to the project folder
-        cd doit_app
+        cd DOiT_MVP
 
         # Install dependencies
         npm install
