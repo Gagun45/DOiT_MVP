@@ -24,6 +24,18 @@ export const postsApi = createApi({
         return { success: false };
       },
     }),
+    createPost: build.mutation<
+      { success: boolean },
+      { title: string; body: string }
+    >({
+      query: (post) => ({ url: `/posts`, method: "POST", body: post }),
+      transformResponse: () => {
+        return { success: true };
+      },
+      transformErrorResponse: () => {
+        return { success: false };
+      },
+    }),
   }),
 });
 
@@ -32,4 +44,5 @@ export const {
   useGetSinglePostByIdQuery,
   useGetCommentsByPostIdQuery,
   useDeletePostByIdMutation,
+  useCreatePostMutation
 } = postsApi;

@@ -6,7 +6,7 @@ export const useDeletePost = () => {
     try {
       const result = await deletePost(postId);
       console.log(`Post ${postId} deleted!`);
-      return result;
+      return { success: Boolean(result.data?.success) };
     } catch {
       return { success: false };
     }
