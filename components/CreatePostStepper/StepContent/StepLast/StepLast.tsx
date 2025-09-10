@@ -29,10 +29,11 @@ const StepLast = ({
     <Dialog
       open={open}
       onClose={onCancel}
-      sx={{ width: "600px", marginX: "auto" }}
+      maxWidth='md'
+      fullWidth
     >
       <DialogTitle>Попередній перегляд</DialogTitle>
-      <DialogContent dividers sx={{ width: "500px" }}>
+      <DialogContent dividers >
         <Typography variant="h4">{title}</Typography>
         <Typography variant="subtitle1">{body}</Typography>
       </DialogContent>

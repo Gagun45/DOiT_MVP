@@ -76,6 +76,7 @@
     │   │   └─ create/          # Page to create a new post
     │   │       └─ page.tsx
     │   ├─ globals.css          # Global CSS
+    │   ├─ not-found.tsx        # 404 Not Found page
     │   ├─ layout.tsx           # Root layout for the app
     │   ├─ page.tsx             # Main landing page
     ├─ components/              # Reusable UI Components
