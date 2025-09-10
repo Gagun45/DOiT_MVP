@@ -23,7 +23,7 @@
         - State Management - uses Redux Toolkit for global state
         - Routing - dynamic routes for individual item pages
         - API Integration - fetch and mutate data usin RTK Query
-        - Unit-test - 
+        - Unit-test -
 
 ## Tech Stack
 
@@ -67,8 +67,6 @@
 
 ## Folder Structure
 
-└─
-
     doit_app/
     ├─ app/                         # Next.js App directory (pages/routes)
     │   ├─ fonts/                   # Custom fonts used in app
@@ -110,16 +108,19 @@
     ├─ package.json
     └─ README.md
 
-## Unit Tests 
-Project uses Jest and React Testing Library to ensure components and Redux logic work as expected
-Features covered by Unit Tests:
-    - Redux slices (snackbar.test.ts):
+## Unit Tests
+
+    Project uses Jest and React Testing Library to ensure components and Redux logic work as expected
+
+    Features covered by Unit Tests:
+    Redux slices (snackbar.test.ts):
         - Reducers update state correctly
         - Actions return expected payloads
         test:
-    - React Components (commentDialog.test.tsx):
+    React Components (commentDialog.test.tsx):
         - Components render correctly based on Redux state
         - Conditional rendering works
         - User interactions work as expected
+        
     # In order to run test script use command
     npm run test
