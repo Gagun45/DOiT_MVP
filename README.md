@@ -4,7 +4,12 @@
 
 ## Table of Contents
 
--[Features] -[Tech Stack] -[Getting Started] -[Scripts] -[Folder Structure] -[Unit Tests]
+    -[Features]
+    -[Tech Stack]
+    -[Getting Started]
+    -[Scripts]
+    -[Folder Structure]
+    -[Unit Tests]
 
 ## Features
 
@@ -121,6 +126,6 @@
         - Components render correctly based on Redux state
         - Conditional rendering works
         - User interactions work as expected
-        
+
     # In order to run test script use command
     npm run test
