@@ -5,9 +5,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const postsApi = createApi({
   reducerPath: "postsApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }),
+  tagTypes: ["allPosts"],
   endpoints: (build) => ({
     getAllPosts: build.query<PostInterface[], void>({
       query: () => "/posts",
+      providesTags: ["allPosts"],
     }),
     getSinglePostById: build.query<PostInterface, string>({
       query: (postId) => `/posts/${postId}`,
@@ -23,6 +25,7 @@ export const postsApi = createApi({
       transformErrorResponse: () => {
         return { success: false };
       },
+      invalidatesTags: ["allPosts"],
     }),
     createPost: build.mutation<
       { success: boolean },
@@ -35,6 +38,7 @@ export const postsApi = createApi({
       transformErrorResponse: () => {
         return { success: false };
       },
+      invalidatesTags: ["allPosts"],
     }),
   }),
 });
@@ -44,5 +48,5 @@ export const {
   useGetSinglePostByIdQuery,
   useGetCommentsByPostIdQuery,
   useDeletePostByIdMutation,
-  useCreatePostMutation
+  useCreatePostMutation,
 } = postsApi;

@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "@/redux/store";
 import { showSnackbar } from "@/redux/slices/snackbarSlice";
 
-const STEPS = ["Заголовок", "тіло", "Попередній перегляд"];
+const STEPS = ["Заголовок", "Тіло", "Попередній перегляд"];
 
 const CreatePostStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
