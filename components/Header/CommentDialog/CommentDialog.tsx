@@ -14,17 +14,24 @@ import { useSelector } from "react-redux";
 
 const CommentDialog = () => {
   const [open, setOpen] = useState(false);
-  const comments = useSelector(selectComments);
+  const comments = useSelector(selectComments) ?? [];
 
   if (comments.length === 0) return null;
   return (
     <>
-      <Button onClick={() => setOpen((prev) => !prev)}>
+      <Button
+        data-testid="comment-button"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <Badge badgeContent={comments.length} color="secondary">
           <Comment />
         </Badge>
       </Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog
+        data-testid="comment-dialog"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
         <DialogTitle>Коментарі</DialogTitle>
         <List sx={{ padding: 2 }}>
           {comments.map((comm) => (

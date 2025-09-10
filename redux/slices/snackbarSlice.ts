@@ -1,8 +1,8 @@
+import type { SeverityType } from "@/utils/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-type SeverityType = "success" | "error" | "warning" | "info";
 
-interface SnackbarState {
+export interface SnackbarState {
   open: boolean;
   message: string;
   severity: SeverityType;

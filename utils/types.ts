@@ -20,3 +20,5 @@ export interface CommentInterface {
   email: string;
   body: string;
 }
+
+export type SeverityType = "success" | "error" | "warning" | "info";
