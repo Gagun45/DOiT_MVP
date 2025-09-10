@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Grid, Skeleton } from "@mui/material";
+import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import PostCard from "../PostCard/PostCard";
 import { useGetAllPostsQuery } from "@/redux/apis/postsApi";
 import { useSelector } from "react-redux";
@@ -36,6 +36,21 @@ const AllPosts = () => {
     );
   if (error || !filteredPosts) {
     return <Box>Error</Box>;
+  }
+
+  if (filteredPosts?.length === 0) {
+    return (
+      <Box>
+        Не знайдено постів, що містять{" "}
+        <Typography
+          component={"span"}
+          sx={{ fontStyle: "italic", fontWeight: "bold" }}
+        >
+          &apos;{searchTermLowerCase}&apos;
+        </Typography>{" "}
+        у заголовку
+      </Box>
+    );
   }
 
   return (
